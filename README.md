@@ -13,3 +13,5 @@
 | testRightTriangleA         | 3, 4, 5    | Right            | Right         | Pass         |
 | testRightTriangleB         | 5, 3, 4    | Right            | Right         | Pass         |
 | testEquilateralTriangles   | 1, 1, 1    | Equilateral      | Equilateral   | Pass         |
+
+[![build status of master](https://travis-ci.org/tsmith567/Triangle567.svg?branch=master)](https://travis-ci.org/tsmith567/Triangle567)
