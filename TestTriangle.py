@@ -8,25 +8,30 @@ The primary goal of this file is to demonstrate a simple unittest implementation
 """
 
 import unittest
-
-from Triangle import classifyTriangle
-
-# This code implements the unit test functionality
-# https://docs.python.org/3/library/unittest.html has a nice description of the framework
+from Triangle import classify_triangle
 
 class TestTriangles(unittest.TestCase):
-    # define multiple sets of tests as functions with names that begin
+    def test_right_triangle(self): 
+        self.assertEqual(classify_triangle(3, 4, 5), 'Right')
+        self.assertEqual(classify_triangle(5, 12, 13), 'Right')
 
-    def testRightTriangleA(self): 
-        self.assertEqual(classifyTriangle(3,4,5),'Right','3,4,5 is a Right triangle')
+    def test_equilateral_triangle(self): 
+        self.assertEqual(classify_triangle(1, 1, 1), 'Equilateral')
 
-    def testRightTriangleB(self): 
-        self.assertEqual(classifyTriangle(5,3,4),'Right','5,3,4 is a Right triangle')
-        
-    def testEquilateralTriangles(self): 
-        self.assertEqual(classifyTriangle(1,1,1),'Equilateral','1,1,1 should be equilateral')
+    def test_isosceles_triangle(self):
+        self.assertEqual(classify_triangle(5, 5, 8), 'Isosceles')
+
+    def test_scalene_triangle(self):
+        self.assertEqual(classify_triangle(6, 7, 8), 'Scalene')
+
+    def test_not_a_triangle(self):
+        self.assertEqual(classify_triangle(1, 10, 12), 'NotATriangle')
+
+    def test_invalid_input(self):
+        self.assertEqual(classify_triangle(210, 100, 100), 'InvalidInput')
+        self.assertEqual(classify_triangle(0, 1, 1), 'InvalidInput')
+        self.assertEqual(classify_triangle(-1, 1, 1), 'InvalidInput')
+        self.assertEqual(classify_triangle(1.5, 1, 1), 'InvalidInput')
 
 if __name__ == '__main__':
-    print('Running unit tests')
     unittest.main()
-
